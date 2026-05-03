@@ -1,32 +1,40 @@
 # Baby Birth Weight Predictor 👶⚖️
 
-A Machine Learning powered web application that predicts a baby's birth weight based on maternal factors.
+An end-to-end Machine Learning web application that predicts an infant's birth weight based on maternal health factors. Built with a strong focus on Software Engineering best practices.
 
 ## 🚀 Features
 
-- **Accurate Predictions**: Uses a trained Machine Learning model to estimate birth weight.
-- **User-Friendly Interface**: Modern, responsive design that works on mobile and desktop.
-- **Real-time Results**: Instant prediction display without page reloads (simulated via rapid server response).
-- **Secure**: Input validation ensures data quality.
+- **Accurate Predictions**: Uses a trained Scikit-Learn Machine Learning model to estimate birth weight.
+- **Robust REST API**: Built using Flask Blueprints for a modular and maintainable backend architecture.
+- **Dual Data Handling**: The `/predict` endpoint seamlessly handles both JSON payloads (for API integrations) and HTML form submissions.
+- **Strict Input Validation**: Gracefully handles missing or invalid data, returning proper HTTP 400 Bad Request responses to ensure server stability.
+- **Unit Testing**: Comprehensive unit tests written using Pytest to guarantee API reliability.
+- **User-Friendly Interface**: Modern, responsive, and glassmorphism-inspired frontend design.
 
 ## 🛠️ Technology Stack
 
-- **Backend**: Python, Flask
-- **Frontend**: HTML5, CSS3 (Custom Responsive Design)
-- **Machine Learning**: Scikit-learn, Pandas, Pickle
-- **Data Processing**: Pandas
+- **Backend**: Python, Flask (Blueprints)
+- **Frontend**: HTML5, CSS3
+- **Machine Learning**: Scikit-Learn, Pandas, Pickle
+- **Testing**: Pytest
 
 ## 📂 Project Structure
 
 ```
-├── app.py                 # Main Flask application
-├── model.pkl             # Trained ML model
-├── requirements.txt      # Python dependencies
+├── app.py                 # Main Flask application entry point
+├── extentions.py          # Flask extensions configuration
+├── model.pkl              # Trained Machine Learning model
+├── model_training.ipynb   # Jupyter Notebook for EDA & Model Training
+├── requirements.txt       # Python dependencies
+├── test_app.py            # Pytest Unit Tests for the API
+├── routes/
+│   ├── predict.py         # Prediction API Blueprint
+│   └── user.py            # User operations Blueprint
 ├── static/
-│   └── style.css         # Custom CSS styling
+│   └── style.css          # Custom CSS styling
 ├── templates/
-│   └── index.html        # Web interface
-└── dataset/              # (Optional) Source data
+│   └── index.html         # Frontend Web UI
+└── dataset/               # Source data
 ```
 
 ## ⚙️ Installation & Usage
@@ -50,11 +58,17 @@ A Machine Learning powered web application that predicts a baby's birth weight b
 4.  **Access the App**
     Open your browser and navigate to: `http://127.0.0.1:5000/`
 
+5.  **Run Unit Tests**
+    To verify the API endpoints, run:
+    ```bash
+    pytest test_app.py
+    ```
+
 ## 📝 Input Parameters
 
 To get a prediction, you need to provide:
 - **Gestation**: Duration of pregnancy in days.
-- **Parity**: Number of previous births.
+- **Parity**: Number of previous births (0 or 1+).
 - **Age**: Mother's age in years.
 - **Height**: Mother's height in inches.
 - **Weight**: Mother's weight in pounds.
@@ -62,4 +76,4 @@ To get a prediction, you need to provide:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions, issues, and feature requests are welcome! Feel free to check issues page or submit a Pull Request.
