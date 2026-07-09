@@ -4,14 +4,14 @@ from extentions import cache
 
 app = Flask(__name__)
 
-## configure my cache
+## Configure Flask-Caching
 app.config['CACHE_TYPE']= 'SimpleCache'
 
-## init (intialize) cache
+## Initialize cache with the Flask app
 cache.init_app(app)
 
 
-## import your blueprints here and register
+## Register blueprints for modular routing
 app.register_blueprint(user.user_bp)
 app.register_blueprint(predict.predict_bp)
 

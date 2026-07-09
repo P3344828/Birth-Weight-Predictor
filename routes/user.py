@@ -1,10 +1,10 @@
 
 from flask import Blueprint
 
-# 3 creating a blueprint/mini flask app for predict object
+# Blueprint for user-related routes
 user_bp = Blueprint("user",__name__)
 
-#  CRUD operations for user
+# Placeholder CRUD operations for user management
 
 
 @user_bp.route('/get_user', methods=['GET'])
