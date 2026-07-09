@@ -140,3 +140,22 @@ button:active {
         font-size: 1.5rem;
     }
 }
+
+.error-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fef2f2;
+    border-left: 5px solid #ef4444;
+    border-radius: 0.5rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-card h3 {
+    margin: 0;
+    color: #b91c1c;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}

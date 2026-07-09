@@ -56,3 +56,20 @@ def test_predict_route_wrong_method():
     response = tester.get("/predict", json=data)
 
     assert response.status_code==405
+
+def test_predict_route_scalar_success():
+    tester = app.test_client()
+
+    data = {
+        'gestation': 279,
+        'parity': 0,
+        'age': 27,
+        'height': 70,
+        'weight': 100,
+        'smoke': 0
+        }
+    response = tester.post("/predict", json=data)
+
+    assert response.status_code == 200
+    assert response.get_json() is not None
+    assert "Prediction" in response.get_json()

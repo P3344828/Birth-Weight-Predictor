@@ -41,12 +41,14 @@ def get_prediction():
 
     # convert into dataframe and ensure numeric types
     try:
-        if is_api:
-            baby_df = pd.DataFrame(baby_data_form)[EXPECTED_COLUMNS]
-        else:
-            # HTML form gives strings, need to parse to float
-            cleaned_data = {col: [float(baby_data_form[col])] for col in EXPECTED_COLUMNS}
-            baby_df = pd.DataFrame(cleaned_data)
+        cleaned_data = {}
+        for col in EXPECTED_COLUMNS:
+            val = baby_data_form[col]
+            if isinstance(val, list):
+                cleaned_data[col] = [float(v) for v in val]
+            else:
+                cleaned_data[col] = [float(val)]
+        baby_df = pd.DataFrame(cleaned_data)
     except Exception as e:
         if is_api:
             return jsonify({"error": "Invalid data format"}), 400
